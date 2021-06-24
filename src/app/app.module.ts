@@ -8,14 +8,17 @@ import { MusicListComponent } from './music-list/music-list.component';
 import { MaterialModule } from './material/material.module';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CardComponent } from './components/card/card.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpConfigInterceptor} from './httpconfig.interceptor';
+import { MusicDetailsComponent } from './components/music-details/music-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MusicListComponent,
     SearchBarComponent,
-    CardComponent
+    CardComponent,
+    MusicDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,13 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpConfigInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,14 +7,14 @@ import { MusicListService } from './music-list.service';
   styleUrls: ['./music-list.component.scss']
 })
 export class MusicListComponent implements OnInit{
-  music;
-  constructor(private musicListService: MusicListService) { }
+
+  constructor(public musicListService: MusicListService) { }
 
   ngOnInit(): void {}
 
   searchSong(value) {
-    this.musicListService.getMusicList(value).subscribe(music => {
-      this.music = music;
+    this.musicListService.getMusicList(value).subscribe((music:any) => {
+      this.musicListService.musicList = music.tracks.items;
     })
   }
 

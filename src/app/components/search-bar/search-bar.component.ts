@@ -18,4 +18,9 @@ export class SearchBarComponent implements OnInit {
     this.musicListService.clearCache();
   }
 
+  filter(str){
+    this.musicListService.musicList = this.musicListService.musicList
+      .filter( option =>option.name.toLowerCase().indexOf(str.toLowerCase()) === 0)
+  }
+
 }

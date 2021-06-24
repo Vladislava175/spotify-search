@@ -7,3 +7,6 @@ mat-form-field {
         background-color: #fff;
     }
 }
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+  top: 2.25em !important;;
+}

@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {MusicListService} from '../../music-list/music-list.service';
 
 @Component({
   selector: 'app-card',
@@ -8,16 +9,9 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input() music;
   player = new Audio;
-  
-  constructor() { }
+
+  constructor(public musicListService: MusicListService) { }
 
   ngOnInit(): void {}
 
-  playSong(audio) {
-    this.player.src = audio.previewUrl;
-    this.player.play();
-  }
-  stopSong(audio) {
-    this.player.pause();
-  }
 }
