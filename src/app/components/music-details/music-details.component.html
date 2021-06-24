@@ -1,1 +1,25 @@
-<p>music-details works!</p>
+<div class="main">
+  <div>
+    <h2>Artist: {{track.album.artists[0].name}}</h2>
+
+    <img mat-card-img [src]="track.album.images[0]?.url">
+  </div>
+  <div class="details">
+    <mat-card-content>
+      <div class="card-details">
+        <h4>{{ track.name }}</h4>
+        <p>Album: {{ track.album.name }} </p>
+        <p>Track No: {{ track.track_number }} </p>
+        <p>Release date: {{ track.album.release_date | date  }} </p>
+        <p>Followers: {{ musicListService.artist.followers?.total }}</p>
+
+        <p>Genres: </p>
+        <ul *ngFor="let genre of musicListService.artist.genres">
+          <li> {{ genre }} </li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </div>
+</div>
+
+

@@ -30,7 +30,6 @@ export class SpotifyService {
       }),
     }).subscribe((res: any) => {
       sessionStorage.setItem('token', res.access_token);
-      debugger
     });
   }
 
@@ -38,7 +37,6 @@ export class SpotifyService {
     this.searchUrl = `https://api.spotify.com/v1/search?query=${str}&offset=0&limit=20&type=${type}&market=US`;
     return this.http.get(this.searchUrl)
       .subscribe((res: any) => {
-        debugger
         this.items = res.artists.items as any[];
       });
   }

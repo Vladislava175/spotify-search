@@ -1,12 +1,4 @@
 <mat-card *ngFor="let music of music; let index = index">
-  <!-- <mat-card-header>
-       <div class="icon-actions">
-           <mat-icon>favorite</mat-icon>
-           <mat-icon>share</mat-icon>
-           <mat-icon>turned_in</mat-icon>
-           <mat-icon>highlight_off</mat-icon>
-       </div>
-   </mat-card-header>-->
   <img mat-card-img [src]="music.album.images[0]?.url">
   <mat-card-content>
     <audio controls [id]="index">
@@ -18,7 +10,7 @@
       <p>Artist: {{music.album.artists[0].name}}</p>
       <p>Album: {{ music.album.name }} </p>
       <p>Track No: {{ music.track_number }} </p>
-      <p> <a [routerLink]="['/details', music.track_number]">To Details and upload</a> </p>
+      <p> <a [routerLink]="['/details', music.track_number]">To Details</a> </p>
 
     </div>
   </mat-card-content>

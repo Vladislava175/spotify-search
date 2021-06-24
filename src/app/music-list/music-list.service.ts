@@ -2,7 +2,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import {MusicList} from './music-list';
-import {publishReplay, refCount} from 'rxjs/operators';
+import {concatMap, delay, publishReplay, refCount, repeat} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,7 @@ export class MusicListService {
   private access_token: string;
   private clientId: string = '2b303ec936c34c9fa821c7831668c425';
   private secretId: string = 'bb1aa3ba8fc241a2b7cdf14c9b4a9920';
-  audio;
-
+  artist;
   constructor(private http: HttpClient) {
     if (!sessionStorage.getItem('token')) {
       this.login();
@@ -54,10 +54,10 @@ export class MusicListService {
     this.$musicList = null;
   }
 
-  getById(id:string) {
+  getById(id: string) {
     this.searchUrl = `https://api.spotify.com/v1/artists/${id}`;
-    this.http.get<any[]>(this.searchUrl).subscribe(res=>{
-debugger
-    })
+    this.http.get<any[]>(this.searchUrl).subscribe((res:any) => {
+      this.artist = res;
+    });
   }
 }

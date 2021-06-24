@@ -8,9 +8,8 @@ import {MusicListService} from '../../music-list/music-list.service';
 })
 export class CardComponent implements OnInit {
   @Input() music;
-  player = new Audio;
 
-  constructor(public musicListService: MusicListService) { }
+  constructor() { }
 
   ngOnInit(): void {}
 

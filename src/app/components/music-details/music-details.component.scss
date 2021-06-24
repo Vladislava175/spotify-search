@@ -1,0 +1,16 @@
+.main{
+  display: flex;
+}
+
+.details{
+  margin: 3%;
+}
+@media screen and (max-width: 999px) {
+  .main{
+    display: block;
+  }
+  img{
+    width: 50%;
+  }
+
+}
