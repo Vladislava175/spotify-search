@@ -1,25 +1,32 @@
-<div class="main">
-  <div>
-    <h2>Artist: {{track.album.artists[0].name}}</h2>
+<mat-card>
+  <div class="main">
+    <div>
+      <h2>Artist: {{track.album.artists[0].name}}</h2>
 
-    <img mat-card-img [src]="track.album.images[0]?.url">
-  </div>
-  <div class="details">
-    <mat-card-content>
-      <div class="card-details">
-        <h4>{{ track.name }}</h4>
-        <p>Album: {{ track.album.name }} </p>
-        <p>Track No: {{ track.track_number }} </p>
-        <p>Release date: {{ track.album.release_date | date  }} </p>
-        <p>Followers: {{ musicListService.artist.followers?.total }}</p>
+      <img mat-card-img [src]="track.album.images[0]?.url" id="photo">
+    </div>
+    <div class="details">
+      <mat-card-content>
+        <div class="card-details">
+          <h4>{{ track.name }}</h4>
+          <p><b>Album:</b> {{ track.album.name }} </p>
+          <p><b>Track No:</b> {{ track.track_number }} </p>
+          <p><b>Release date:</b> {{ track.album.release_date | date  }} </p>
+          <audio controls>
+            <source [src]="track.preview_url" type="audio/ogg">
+            <source [src]="track.preview_url" type="audio/mpeg">
+          </audio>
+          <p><b>Followers:</b> {{ musicListService.artist.followers?.total }}</p>
+        </div>
 
-        <p>Genres: </p>
+        <p><b>Genres:</b></p>
         <ul *ngFor="let genre of musicListService.artist.genres">
           <li> {{ genre }} </li>
         </ul>
-      </div>
-    </mat-card-content>
-  </div>
-</div>
+      </mat-card-content>
 
+    </div>
+
+  </div>
+</mat-card>
 

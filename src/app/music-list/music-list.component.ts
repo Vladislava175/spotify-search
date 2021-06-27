@@ -14,7 +14,7 @@ export class MusicListComponent implements OnInit{
 
   searchSong(value) {
     this.musicListService.getMusicList(value).subscribe((music:any) => {
-      this.musicListService.musicList = music.tracks.items;
+      this.musicListService.musicList = music.tracks.items.filter(f=>f.preview_url!==null);
       sessionStorage.setItem("list", JSON.stringify(music.tracks.items))
     })
   }

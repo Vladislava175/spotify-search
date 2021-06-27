@@ -10,7 +10,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class MusicDetailsComponent implements OnInit {
   track: any = null;
-  fileUrl
+  fileUrl;
+  index = 0;
 
   constructor(private route: ActivatedRoute, public musicListService: MusicListService, private sanitizer: DomSanitizer) {
   }
@@ -18,5 +19,20 @@ export class MusicDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.track = JSON.parse(sessionStorage.getItem('list')).find(f => f.track_number == Number(this.route.snapshot.paramMap.get('id')));
     this.musicListService.getById(this.track.artists[0].id);
+    this.change();
+  }
+
+  change() {
+/*    setTimeout(() => {
+      console.log('change');
+      document.getElementById('photo').src = this.track.album.images[this.index];
+      if (this.index == this.track.album.images.length) {
+        this.index = 0;
+      } else {
+        this.index++;
+      }
+      this.change();
+
+    }, 5000);*/
   }
 }

@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import {MusicListService} from '../../music-list/music-list.service';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -9,8 +8,10 @@ import {MusicListService} from '../../music-list/music-list.service';
 export class CardComponent implements OnInit {
   @Input() music;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 }
